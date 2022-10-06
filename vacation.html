@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vacation</title>
+   
+
+</head>
+
+<body class="container">
+
+    <h2> Ravipati Navya selects a vacation</h2>
+
+    <div class="container-fluid">
+        <form>
+
+            <input type="checkbox" class="form-input-check" id="form1_air" class="form1_air" name="form1_air"
+                value="True" />
+            <label for="form1_air"> Travel by Air</label>
+            <br>
+
+            <input type="checkbox" class="form-input-check" id="form1_domestic" class="form1_domestic"
+                name="form1_domestic" value="True" />
+            <label for="Domestic"> Domestic</label>
+            <br>
+
+            <input type="checkbox" class="form-input-check" id="form1_resort" class="form1_resort" name="form1_resort"
+                value="False" />
+            <label for="Resort"> Resort</label><br>
+            <br />
+            <input type="button" class="btn btn-sm btn-primary" onClick="selectVacation()" value="Select a vacation" />
+
+        </form>
+        <p id="result1">Result displayed here!</p>
+        <form>
+
+            <label for="name">Enter a city</label>
+            <input type="text" class="form-control" id="form1_name" name="form1_name" value="city" />
+            <br />
+            <br>
+            <label for="name1">Enter price</label>
+            <input type="text" class="form-control" id="form1_name1" name="form1_name1" /> <br>
+            <br />
+            <input type="button" class="btn btn-sm btn-success" onClick="updateVacation()" value="Update the Vacation" />
+        </form>
+
+        <p id="result2">Result displayed here!</p>
+    </div>
+
+    <script>
+        var my_vacation = {};
+        function selectVacation() {
+            my_vacation = {};
+            let bytravel = document.getElementById("form1_air").checked
+            let bydomestic = document.getElementById("form1_domestic").checked
+            let byresort = document.getElementById("form1_resort").checked
+            if (bytravel) {
+                my_vacation.Travel = true;
+            } else {
+                my_vacation.Travel = false;
+            } if (bydomestic) {
+                my_vacation.Domestic = true;
+            } else {
+                my_vacation.Domestic = false;
+            } if (byresort) {
+                my_vacation.Resort = true;
+            } else {
+                my_vacation.Resort = false;
+            }
+            document.getElementById("result1").innerHTML = JSON.stringify(my_vacation)
+        }
+    </script>
+    <script>
+        var my_vacation = {};
+        function updateVacation() {
+            let city = document.getElementById("form1_name").value;
+            let price = document.getElementById("form1_name1").value;
+            my_vacation["city"] = city;
+            my_vacation["price"] = price;
+            document.getElementById("result2").innerHTML = JSON.stringify(my_vacation)
+        }
+    </script>
+</body>
+
+</html>

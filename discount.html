@@ -1,38 +1,65 @@
 <!DOCTYPE html>
 <html>
- 
+<head>
+    
+</head>
 <body>
 
-<h2>Computes Discounts by Navya</h2>
+    <h2>Computes Discounts by Navya</h2>
 
-<form>
-    <label for="form1_age">Enter base amount </label>
-    <input type ="number" id="form1_age" class="input-form" name="form1_age" value=20> <br>
+    <form>
+        <label for="firstnum">Enter base amount </label>
+        <input type="number" id="first_num" class="input-form" name="firstnum" value=20> <br>
 
-    <label for="form1_nick">Enter the discount percentage </label>
-    <input type ="number" id="form1_nick"  class="input-form" name="form1_nick" value="10" autofocus> <br>
+        <label for="secondnum">Enter the discount percentage </label>
+        <input type="number" id="second_num" class="input-form" name="secondnum" value="10" autofocus> <br>
 
-    <input type="button" onClick="discount()" value="Apply discount" class="btn btn-sm btn-info">
-</form>
+        <input type="button" onClick="discount()" value="Apply discount" class="btn btn-sm btn-info">
+    </form>
 
 
-<p id="result">This text will be replaced </p>
+    <p id="result">This text will be replaced </p>
 
-<script> 
-
-function discount (){debugger
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    out = document.getElementById("result")
-    result = ""
-   for(let i=1;i <=5;i++){
-    let base = i * age;
-    result +=  base - (base * nick)  /100  + " "  ;
-   }
-   out.innerHTML = "Discounted amounts for base " + age + " are " + result;
-}
-</script>
+    <form>
+        <input type="radio" class="form-input-check" id="times" name="arthematic" value="Times" onClick="chooseOp()">
+        <label for="Times">Times</label></br>
+        <input type="radio" class="form-input-check" id="divide" name="arthematic" value="divide" onClick="chooseOp()">
+        <label for="divide">Divide</label></br>
+        <input type="radio" class="form-input-check" id="exponent" name="arthematic" value="exponent"
+            onClick="chooseOp()">
+        <label for="exponent">Exponent</label></br>
+    </form>
+    <p id="result2">Result will be displayed here! </p>
+    <script>
+        function discount() {
+            console.log("Getting form values")
+            firstnum = document.getElementById("first_num").value
+            secondnum = document.getElementById("second_num").value
+            out = document.getElementById("result")
+            result = ""
+            for (let i = 1; i <= 5; i++) {
+                let base = i * firstnum;
+                result += base - (base * secondnum) / 100 + " ";
+            }
+            out.innerHTML = "Discounted amounts for base " + firstnum + " are " + result;
+        }
+        function chooseOp() {
+            firstnum = document.getElementById("first_num").value
+            secondnum = document.getElementById("second_num").value
+            firstnum = (Number)(firstnum);
+            secondnum = (Number)(secondnum);
+            if (document.getElementById("times").checked) {
+                firstnum *= secondnum;
+            } else if (document.getElementById("divide").checked) {
+                firstnum /= secondnum;
+            } else {
+                firstnum = Math.pow(firstnum, secondnum);
+            }
+            out = document.getElementById("result2")
+            out.innerHTML = firstnum
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>
