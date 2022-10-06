@@ -19,42 +19,47 @@
 </head>
 
 <body>
-
-    <h2>Musician Guess by Ravipati Navya</h2>
-    <br>
-    <form>
-        <div>
-            <label for="secret">Enter the secret musician name</label>
-            <input type="password" id="secret" name="secret" value="John Lennon"> <br>
-        </div>
-        <br>
-        <div>
-            <label for="guess">Enter a guess </label>
-            <input type="text" id="guess" name="guess" autofocus> <br>
-        </div>
-        <br>
-        <input type="button" class="btn btn-sm btn-info" onclick="checkGuess()" value="Check the guess">
-    </form>
-    <br>
-    <p id="result">"Correct and Wrong Count displayed here!"</p>
-
     <div class="container">
-        <img src="Ant.jpg" alt="Image of an Ant" id="images" height="100" width="100" onClick="swapImage()">
-    </div>
+        <h2>Musician Guess by Ravipati Navya</h2>
+        <br>
+        <form>
+            <div>
+                <label for="secret">Enter the secret musician name</label>
+                <input type="password" id="secret" name="secret" value="John Lennon"> <br>
+            </div>
+            <br>
+            <div>
+                <label for="guess">Enter a guess </label>
+                <input type="text" id="guess" name="guess" autofocus> <br>
+            </div>
+            <br>
+            <input type="button" class="btn btn-sm btn-info" onclick="checkGuess()" value="Check the guess">
+        </form>
+        <br>
+        <p id="result">"Correct and Wrong Count displayed here!"</p>
 
+        <div class="container">
+            <img src="Ant.jpg" alt="Image of an Ant" id="images" height="100" width="100" onClick="swapImage()">
+        </div>
+    </div>
     <script>
         let correct = 0, wrong = 0, useImage = 1;
 
         function checkGuess() {
-            secret = document.getElementById("secret").value
-            guess = document.getElementById("guess").value
-            out = document.getElementById("result")
-            if (secret == guess) {
-                alert("You got it right")
-                correct = correct + 1
-            } else {
-                alert("Wrong Musician")
-                wrong = wrong + 1
+            if (wrong < 2) {
+                secret = document.getElementById("secret").value
+                guess = document.getElementById("guess").value
+                out = document.getElementById("result")
+                if (secret == guess) {
+                    alert("You got it right")
+                    correct = correct + 1
+                } else {
+                    alert("Wrong Musician")
+                    wrong = wrong + 1
+                }
+            }
+            else {
+                alert("Sorry, game over.")
             }
             out.innerHTML = "Number of Right Count is " + correct + " Number of Wrong Count is " + wrong;
         }
