@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+
+<h2>Computes Discounts by Navya</h2>
+
+<form>
+    <label for="form1_age">Enter base amount </label>
+    <input type ="number" id="form1_age" class="input-form" name="form1_age" value=20> <br>
+
+    <label for="form1_nick">Enter the discount percentage </label>
+    <input type ="number" id="form1_nick"  class="input-form" name="form1_nick" value="10" autofocus> <br>
+
+    <input type="button" onClick="discount()" value="Apply discount" class="btn btn-sm btn-info">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+function discount (){debugger
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    out = document.getElementById("result")
+    result = ""
+   for(let i=1;i <=5;i++){
+    let base = i * age;
+    result +=  base - (base * nick)  /100  + " "  ;
+   }
+   out.innerHTML = "Discounted amounts for base " + age + " are " + result;
+}
+</script>
+
+</body>
+</html> 
